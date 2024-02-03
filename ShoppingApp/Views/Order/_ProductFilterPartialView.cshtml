@@ -1,0 +1,23 @@
+﻿@model IEnumerable<ShoppingApp.Models.Product>
+
+
+
+
+
+<div class="card-lists" id="card-lists">
+    <div class="row">
+        @foreach (var product in Model)
+        {
+
+            <a  class="card bg-primary "  asp-action="ProductDetails" asp-route-id="@product.Id">
+                <img src="@($"{MyFileSettings.ImagesPath}/{product.Image}")" alt="image" />
+                <div class="card-body">
+                    <h5 class="card-title" style="color:white">@product.Name</h5>
+                     <h5 class="card-footer" style="color:white">@product.Price</h5>
+                </div>
+             
+            </a>
+
+        }
+    </div>
+</div>

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ShoppingApp.ViewModels.UserViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Users</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <h5>Name</h5>
+            </th>
+
+           
+
+            <th> </th>
+
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <h5>@item.Name</h5>
+                </td>
+
+               
+                <td>
+                    <a class="btn btn-info rounded rounded-3 " asp-action="ResetPassword" asp-route-Name="@item.Name"> Reset Password</a>
+                </td>
+              
+            </tr>
+        }
+    </tbody>
+</table>

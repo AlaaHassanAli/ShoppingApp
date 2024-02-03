@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Order>
+@{
+    ViewData["Title"] = "UserHistory";
+}
+
+<h1>My Orders</h1>
+@if(Model is null)
+{
+    <h3>No Items Added Yet</h3>
+}
+else
+{
+    
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+               Order ID
+            </th>
+
+            <th>
+                Total Price
+            </th>
+            <th>
+                Number Of Items
+            </th>
+           
+            
+
+            <th></th>
+        </tr>
+    </thead>
+   <tbody>
+
+    @foreach (var item in Model)
+    {
+         <tr>
+
+                <td>
+                @Html.DisplayFor(modelItem => item.Id)
+                </td>              
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberOfItems)
+                </td>
+                   
+
+         </tr>
+        
+    }
+    </tbody>
+
+</table>
+}
+
+ @section UserNavBar {
+
+        <Partial name="_NavPartialUser" />
+ }

@@ -1,0 +1,50 @@
+﻿@model ShoppingApp.ViewModels.HomePageViewModel
+
+@{
+    ViewData["Title"] = "HomePage";
+}
+
+<h1>Home Page</h1>
+<br/>
+<div class="row">
+    <div class="col-md-2">
+
+        <ul class=" no-bullets">
+                <li>
+                       <button style ="width:150px" data-url='@Url.Action("AllProducts", "Order")' class="js-reload-details btn btn-primary">All Products</button>
+                </li>
+                <br/>
+                 @foreach (var item in Model.Categories)
+                {
+                <li>
+                        <button style="width:150px" data-url='@Url.Action("CategoryFilter", "Order", new { id = item.Id })' class="js-reload-details btn btn-primary"> @item.Name  </button>
+                </li>
+                <br />
+                }
+               
+            </ul>
+
+    </div>
+
+    <div class="col">
+
+            <div id="detailsDiv">
+
+            <partial name="_ProductFilterPartialView" model='@Model.Products' />
+          </div>
+      
+
+
+    </div>
+</div>
+@section Scripts
+{
+    
+    <script src="~/js/product-filter.js" asp-append-version="true"></script>
+ 
+}
+@section UserNavBar {
+
+    <Partial name="_NavPartialUserWithSearchBox" />
+
+}

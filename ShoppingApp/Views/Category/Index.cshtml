@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ShoppingApp.Models.Category>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Categories</h1>
+<p>
+
+<a class="btn btn-primary"  asp-action="AddCategory">New</a>
+</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+          
+            <th>
+                <h3>Name</h3>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+           
+            <td>
+                <h5>@item.Name</h5>
+
+            </td>
+                <td>
+                    <div >
+                        <a class="btn btn-info rounded rounded-3" asp-action="EditCategory" asp-route-id="@item.Id"> Edit </a>
+
+                        <a class="btn btn-danger rounded rounded-3 js-delete" data-id="@item.Id">Delete</a>
+                    </div>
+                </td>
+        </tr>
+}
+    </tbody>
+</table>
+@section Scripts
+{
+    <script src="~/js/Admin-DeleteCategory.js" asp-append-version="true"></script>
+}

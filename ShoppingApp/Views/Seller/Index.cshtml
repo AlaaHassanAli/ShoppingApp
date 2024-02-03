@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ShoppingApp.ViewModels.SellerViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Sellers</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="RegisterSeller" asp-controller="Account">Create New Seller</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <h5>Name</h5>
+            </th>
+           
+            <th>
+                <h5>Active</h5>
+            </th>
+
+            <th> </th>
+
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                    <h5>@item.Name</h5>
+            </td>
+            
+            <td>
+                    <input class="form-check-input" asp-for="@item.active" disabled>
+             </td>
+            <td>
+                    <a class="btn btn-info rounded  " asp-action="ResetPassword" asp-route-Name="@item.Name"> Reset Password</a>
+            </td>
+            <td>
+                    <a class="btn btn-info rounded " asp-action="EditSeller" asp-route-id="@item.Id"> Edit </a>
+                </td>
+        </tr>
+}
+    </tbody>
+</table>
+
